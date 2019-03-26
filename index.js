@@ -10,9 +10,9 @@ const https_port = 443;
 
 const http_server = http.createServer(app);
 
-http_server.listen(port, () => {
-    console.log("HTTP server up");
-});
+// http_server.listen(port, () => {
+//     console.log("HTTP server up");
+// });
 
 const privateKey = fs.readFileSync('/etc/letsencrypt/live/joelmaenpaa.com/privkey.pem', 'utf8');
 const certificate = fs.readFileSync('/etc/letsencrypt/live/joelmaenpaa.com/cert.pem', 'utf8');
