@@ -25,11 +25,12 @@
                 if(categories.length >0){
                 
                 for(let category of categories){
-                    var id  = category._id;
+                    var id  = category.id;
                     var categoryTitle = category.title;
                    
                 %>
                 <option value=<%=
+                
                 `${id}`
                 %>>
                     <%=

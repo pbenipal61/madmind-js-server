@@ -12,6 +12,7 @@ function categorySelectionChange() {
     } else {
         document.getElementById("newCategoryDiv").style.display = "none";
     }
+
     console.log(e.options[e.selectedIndex].text);
     document.getElementById("categoryTitle").value = e.options[e.selectedIndex].text;
 

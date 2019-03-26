@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/addQuestion', main.addQuestion);
 router.post('/addQuestion', main.postAddQuestion);
-
+router.get('/questions', main.questions);
 
 
 

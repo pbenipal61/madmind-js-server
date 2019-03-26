@@ -4,7 +4,7 @@ exports.addQuestion = (req, res, next) => {
 
     Category.findAll()
         .then(categories => {
-            console.log(categories);
+            //  console.log(categories);
             res.render('questions/addQuestion', {
 
                 categories: categories,
@@ -31,11 +31,10 @@ exports.postAddQuestion = (req, res, next) => {
 
     console.log("Adding a new question");
     var categoryId = req.body.category;
+    console.log("category id ", categoryId);
     var categoryTitle = req.body.categoryTitle;
     var newCategoryTitle = req.body.newCategory;
-    if (newCategoryTitle != null || newCategoryTitle != undefined) {
-        categoryTitle = newCategoryTitle;
-    }
+
     var categoryStatus = req.body.categoryStatus;
     var question = req.body.question;
     var correctAnswer = req.body.correctAnswer;
@@ -182,3 +181,28 @@ exports.postAddQuestion = (req, res, next) => {
 
 
 };
+
+exports.questions = (req, res, next) => {
+
+    // MQuestion.find().then(result => {
+    //     res.status(200).send(result);
+    // })
+    //     .catch(err => {
+    //         res.status(400).send({
+    //             message: "Error in getting all questions",
+    //             err: err
+    //         });
+    //     })
+    Question.findAll()
+        .then(questions => {
+            res.render('questions/questions', {
+
+                questions: questions,
+                path: '/'
+
+
+            });
+        })
+        .catch(err => { console.log("Error in fetching all questions list. " + err) });
+
+}
