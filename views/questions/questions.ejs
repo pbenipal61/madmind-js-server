@@ -21,6 +21,7 @@
             <th>option2</th>
             <th>option3</th>
             <th>categoryId</th>
+            <th>categoryTitle</th>
 
         </tr>
 
@@ -30,6 +31,7 @@
                 var id = question.id;
                 var q  = question.question;
                 var category = question.categoryId;
+                var categoryTitle = question.categoryTitle;
                 var correctAnswer = question.correctAnswer;
                 var option1 = question.option1;
                 var option2 = question.option2;
@@ -74,7 +76,11 @@
             `${category}`
             %>
             </td>
-
+            <td>
+                <%=
+                    `${categoryTitle}`
+                    %>
+            </td>
 
         </tr>
         <%}}%>
