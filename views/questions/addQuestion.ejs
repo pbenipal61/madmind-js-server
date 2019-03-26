@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add questions</title>
+    <link rel="stylesheet" href="/css/addQuestion.css">
+    <script src="/js/addQuestion.js"></script>
+</head>
+
+<body>
+
+    <div id="main">
+
+        <form id="questionForm" method="POST">
+            <label>category = </label>
+            <select name="category" id="category" onchange="categorySelectionChange()">
+                <option value="-1">Choose a category</option>
+                <option value="-2">Add a new category</option>
+                <% 
+                
+             //   console.log("categories are " , categories["categories"].length);
+                if(categories.length >0){
+                
+                for(let category of categories){
+                    var id  = category._id;
+                    var categoryTitle = category.title;
+                   
+                %>
+                <option value=<%=
+                `${id}`
+                %>>
+                    <%=
+                `${categoryTitle}`
+                %>
+                </option>
+                <%}}%>
+            </select> <br>
+            <div id="newCategoryDiv">
+                <br>
+                <label>new category title = </label>
+                <input type="text" name="newCategory" id="newCategory" placeholder="New category title"><br>
+
+
+            </div>
+            <input type="text" id="categoryTitle" name="categoryTitle" value=""></input>
+            <br>
+            <label>question = </label>
+            <input type="text" name="question" placeholder="Question"><br>
+            <label>correctAnswer = </label>
+            <input type="text" name="correctAnswer" placeholder="Correct Answer"><br>
+            <label>option1 = </label>
+            <input type="text" name="option1" placeholder="Option 1"><br>
+            <label>option2 = </label>
+            <input type="text" name="option2" placeholder="Option 2"><br>
+            <label>option3 = </label>
+            <input type="text" name="option3" placeholder="Option 3"><br>
+            <br>
+            <input type="submit" value="Submit">
+
+
+
+        </form>
+    </div>
+</body>
+
+</html>
