@@ -4,7 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const sequelize = require('./utils/database');
-
+var serveIndex = require('serve-index');
 
 const app = express();
 
@@ -14,13 +14,26 @@ app.set('views', 'views');
 const apiRoute = require('./routes/api');
 
 
+app.use((req, res, next) => {
 
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader(
+        'Access-Control-Allow-Methods',
+        'OPTIONS,GET,POST,PUT,PATCH,DELETE'
+    );
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    }
+
+    next();
+});
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public'), { dotfiles: 'allow' }));
 
-
+app.use('/.well-known', express.static('.well-known'), serveIndex('.well-known'));
 
 
 app.use('/api', apiRoute);
