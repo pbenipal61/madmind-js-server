@@ -3,7 +3,7 @@ const http = require('http');
 const app = require('./app');
 const https = require("https");
 const fs = require("fs");
-const port = 3000;
+const port = 80;
 const https_port = 443;
 
 
