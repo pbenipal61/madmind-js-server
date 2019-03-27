@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Update question</title>
+    <link rel="stylesheet" href="/css/addQuestion.css">
+
+
+
+    <!-- <script src="/js/updateQuestion.js"></script> -->
+
+
+</head>
+<% 
+     console.log(question);
+  //  var questionDict = questions["questions"][0];
+  //   var categoryId = questionDict["categoryId"];
+  
+
+    %>
+
+<body>
+
+    <div id="main" onload="setCategory()">
+        <span id='variableJSON' hidden>
+            <%= JSON.stringify(question); %>
+        </span>
+        <form id="questionForm" method="POST">
+
+
+
+
+            <script>
+                var questionDict;
+                console.log("running script");
+                setCategory();
+                function setCategory() {
+                    questionDict = JSON.parse(document.getElementById("variableJSON").textContent);
+                    //  console.log(questionDict["question"]);
+                    // //  console.log(questionDict);
+                    // var categoryId = questionDict["questions"][0]["categoryId"];
+                    // //   console.log("category id is ", categoryId);
+                    // var categories = questionDict['categories'];
+
+                    // console.log("categories are ", categories);
+                    // // console.log("categories length is ", categories.length);
+                    // var str = `<label>category = </label><select name="category" id="category" value=${categoryId} onchange="categorySelectionChange()">
+                    //         <option value="-1">Choose a category</option>`;
+
+
+                    // questionDict = questionDict["questions"][0];
+                    // console.log(questionDict);
+
+                    //  setAllValues();
+                }
+
+
+                function setAllValues() {
+                    console.log("trying to set all values");
+
+
+
+
+
+                    if (questionDict["question"] != null) {
+                        document.getElementById("question").value = questionDict["question"];
+                    }
+                    if (questionDict["correctAnswer"] != null) {
+                        document.getElementById("correctAnswer").value = questionDict["correctAnswer"];
+                    }
+                    if (questionDict["option1"] != null) {
+                        document.getElementById("option1").value = questionDict["option1"];
+                    }
+                    if (questionDict["option2"] != null) {
+                        document.getElementById("option2").value = questionDict["option2"];
+                    }
+                    if (questionDict["option3"] != null) {
+                        document.getElementById("option3").value = questionDict["option3"];
+                    }
+
+                    if (questionDict["categoryTitle"] != null) {
+                        document.getElementById("categoryTitle").value = questionDict["categoryTitle"];
+                    }
+
+
+                }
+            </script>
+
+
+            <br>
+            <input type="text" id="categoryTitle" name="categoryTitle" value=""></input>
+            <label>question = </label>
+            <input type="text" name="question" id="question" placeholder="Question"><br>
+            <label>correctAnswer = </label>
+            <input type="text" name="correctAnswer" placeholder="Correct Answer" id="correctAnswer"><br>
+            <label>option1 = </label>
+            <input type="text" name="option1" id="option1" placeholder="Option 1"><br>
+            <label>option2 = </label>
+            <input type="text" name="option2" placeholder="Option 2" id="option2"><br>
+            <label>option3 = </label>
+            <input type="text" name="option3" placeholder="Option 3" id="option3"><br>
+
+            <br>
+            <input type="submit" value="Update">
+
+
+
+        </form>
+    </div>
+    <script>
+
+        setAllValues();
+
+
+    </script>
+
+</body>
+
+</html>
